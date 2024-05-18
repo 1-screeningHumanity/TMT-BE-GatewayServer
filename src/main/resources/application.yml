@@ -1,0 +1,27 @@
+#spring.application.name=GatewayServer
+
+spring:
+  application:
+    name: GatewayServer
+  cloud:
+    gateway:
+      mvc:
+        routes:
+#          - id: user-service
+#            uri: lb://MEMBER-SERVICE
+#            predicates:
+#              - Path=/member-service/**
+#            filters:
+#              - StripPrefix=1
+
+#eureka
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#Token
+JWT:
+  SECRET_KEY: sldkfjsoidfjwoeir12393012809vxcv89usdfkjn1203491iu0isdfl
