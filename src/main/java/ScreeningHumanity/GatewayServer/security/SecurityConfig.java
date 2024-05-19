@@ -53,7 +53,7 @@ public class SecurityConfig {
                                         "/swagger-resources/**",
                                         "/api-docs/**").permitAll()
                                 .requestMatchers("/error").permitAll()
-//                                .requestMatchers("/api/v1/**").permitAll()
+                                .requestMatchers("/api/v1/**").permitAll()
                                 .anyRequest()
                                 .authenticated()
                 )
