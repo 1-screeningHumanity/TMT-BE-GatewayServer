@@ -19,7 +19,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${EUREKA_URl}
-#      defaultZone: http://localhost:8761/eureka/
 
 #Token
 JWT:

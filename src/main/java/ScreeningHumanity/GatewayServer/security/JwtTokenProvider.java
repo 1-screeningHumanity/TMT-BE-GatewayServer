@@ -24,10 +24,6 @@ public class JwtTokenProvider {
         return claimsResolver.apply(claims);
     }
 
-    public String validateAndGetUserUuid(String token) {
-        return extractClaim(token, Claims::getSubject);
-    }
-
     public boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new java.util.Date());
     }

@@ -38,10 +38,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         jwt = authHeader.substring(7);
-        try{
+        try {
             jwtTokenProvider.isTokenExpired(jwt);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             log.info("Token exception : {}", e.getMessage());
             responseError(response, jwt);
             return;
