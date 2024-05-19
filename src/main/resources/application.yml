@@ -1,8 +1,6 @@
-#spring.application.name=GatewayServer
-
 spring:
   application:
-    name: GatewayServer
+    name: gateway-server
   cloud:
     gateway:
       mvc:
@@ -20,8 +18,11 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_URl}
 
 #Token
 JWT:
   SECRET_KEY: sldkfjsoidfjwoeir12393012809vxcv89usdfkjn1203491iu0isdfl
+
+server:
+  port: ${GATEWAY_SERVER}
