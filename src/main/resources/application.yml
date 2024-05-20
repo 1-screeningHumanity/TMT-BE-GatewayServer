@@ -3,17 +3,19 @@ spring:
     name: gateway-server
   cloud:
     gateway:
-      mvc:
-        routes:
-#          - id: user-service
-#            uri: lb://MEMBER-SERVICE
-#            predicates:
-#              - Path=/member-service/**
-#            filters:
-#              - StripPrefix=1
+      routes:
+        - id: trade-server
+          uri: lb://TRADE-SERVER
+          predicates:
+            - Path=/trade/**
+          filters:
+            - StripPrefix=1
 
 #eureka
 eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    hostname: localhost
   client:
     register-with-eureka: true
     fetch-registry: true
