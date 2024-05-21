@@ -4,12 +4,29 @@ spring:
   cloud:
     gateway:
       routes:
+        #매수/매도 서버 (전체 Token 인증 필요)
         - id: trade-server
           uri: lb://TRADE-SERVER
           predicates:
             - Path=/trade/**
           filters:
             - StripPrefix=1
+            - AuthorizationHeaderFilter #Token 인증 필터
+        #유저 인증 서버 (Token 인증 필요 X path)
+        - id: member-server
+          uri: lb://MEMBER-SERVER
+          predicates:
+            - Path=/member/**
+          filters:
+            - StripPrefix=1
+        #유저 인증 서버 (Token 인증 필요 O path)
+        - id: member-server
+          uri: lb://MEMBER-SERVER
+          predicates:
+            - Path=/member/**
+          filters:
+            - StripPrefix=1
+            - AuthorizationHeaderFilter #Token 인증 필터
 
 #eureka
 eureka:
