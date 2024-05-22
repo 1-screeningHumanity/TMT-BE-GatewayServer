@@ -26,7 +26,7 @@ spring:
         - id: trade-server
           uri: lb://TRADE-SERVER
           predicates:
-            - Path=api/v1/trade/**
+            - Path=/api/v1/trade/**
           filters:
             - StripPrefix=3
             - AuthorizationHeaderFilter #Token 인증 필터
@@ -34,14 +34,14 @@ spring:
         - id: member-server
           uri: lb://MEMBER-SERVER
           predicates:
-            - Path=api/v1/member/**
+            - Path=/api/v1/member/**
           filters:
             - StripPrefix=3
         #유저 인증 서버 (Token 인증 필요 O path)
         - id: member-server
           uri: lb://MEMBER-SERVER
           predicates:
-            - Path=api/v1/member/**
+            - Path=/api/v1/member/**
           filters:
             - StripPrefix=3
             - AuthorizationHeaderFilter #Token 인증 필터
