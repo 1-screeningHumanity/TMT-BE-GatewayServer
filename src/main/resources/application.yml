@@ -51,14 +51,14 @@ spring:
 #            - StripPrefix=3
 #            - AuthorizationHeaderFilter #Token 인증 필터
         - id: trade-service-swagger
-          uri: lb://TRADE-SERVICE
+          uri: lb://TRADE-SERVER
           predicates:
-            - Path=/trade-service/api-docs
+            - Path=/trade-server/api-docs
 springdoc:
   swagger-ui:
     urls[0]:
       name: 회원 서비스
-      url: /trade-service/api-docs
+      url: /trade-server/api-docs
 
     use-root-path: true
 
