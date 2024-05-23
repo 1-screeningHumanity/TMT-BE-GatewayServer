@@ -50,32 +50,43 @@ spring:
 #          filters:
 #            - StripPrefix=3
 #            - AuthorizationHeaderFilter #Token 인증 필터
-
+        - id: trade-service-swagger
+          uri: lb://TRADE-SERVICE
+          predicates:
+            - Path=/trade-service/api-docs
 springdoc:
-  default-consumes-media-type: application/json;charset=UTF-8
-  default-produces-media-type: application/json;charset=UTF-8
-  enable-native-support: true
-  api-docs:
-    enabled: true
   swagger-ui:
-    enabled: true
-    path: /swagger-ui.html
-    tags-sorter: alpha
-    operations-sorter: alpha
-    config-url: /v3/api-docs/swagger-config
-    urls:
-#      - url: http://localhost:59061/api-docs/json #localhost test - OK
+    urls[0]:
+      name: 회원 서비스
+      url: /member-service/api-docs
+
+    use-root-path: true
+
+#springdoc:
+#  default-consumes-media-type: application/json;charset=UTF-8
+#  default-produces-media-type: application/json;charset=UTF-8
+#  enable-native-support: true
+#  api-docs:
+#    enabled: true
+#  swagger-ui:
+#    enabled: true
+#    path: /swagger-ui.html
+#    tags-sorter: alpha
+#    operations-sorter: alpha
+#    config-url: /v3/api-docs/swagger-config
+#    urls:
+##      - url: http://localhost:59061/api-docs/json #localhost test - OK
+##        name: Trade
+#      - url: http://trade-server/api-docs/json #todo : service 추가 될때마다 swagger에 붙여 줘야됨.
 #        name: Trade
-      - url: http://trade-server/api-docs/json #todo : service 추가 될때마다 swagger에 붙여 줘야됨.
-        name: Trade
-#      - url: http://trade-server/api-docs/json
-#        name: Trade
-#      - url: http://trade-server/api-docs/json
-#        name: Trade
-#      - url: http://trade-server/api-docs/json
-#        name: Trade
-  cache:
-    disabled: true
+##      - url: http://trade-server/api-docs/json
+##        name: Trade
+##      - url: http://trade-server/api-docs/json
+##        name: Trade
+##      - url: http://trade-server/api-docs/json
+##        name: Trade
+#  cache:
+#    disabled: true
 
 #eureka
 eureka:
