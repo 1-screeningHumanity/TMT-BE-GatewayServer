@@ -58,7 +58,7 @@ springdoc:
   swagger-ui:
     urls[0]:
       name: 회원 서비스
-      url: /member-service/api-docs
+      url: /trade-service/api-docs
 
     use-root-path: true
 
