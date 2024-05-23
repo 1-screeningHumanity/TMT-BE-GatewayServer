@@ -54,6 +54,7 @@ spring:
           uri: lb://TRADE-SERVER
           predicates:
             - Path=/trade-server/api-docs
+            - StripPrefix=1
 springdoc:
   swagger-ui:
     urls[0]:
