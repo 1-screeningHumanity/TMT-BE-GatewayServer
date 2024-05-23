@@ -43,13 +43,39 @@ spring:
           filters:
             - StripPrefix=3
         #유저 인증 서버 (Token 인증 필요 O path)
-        - id: member-server
-          uri: lb://MEMBER-SERVER
-          predicates:
-            - Path=/api/v1/member/**
-          filters:
-            - StripPrefix=3
-            - AuthorizationHeaderFilter #Token 인증 필터
+#        - id: member-server
+#          uri: lb://MEMBER-SERVER
+#          predicates:
+#            - Path=/api/v1/member/**
+#          filters:
+#            - StripPrefix=3
+#            - AuthorizationHeaderFilter #Token 인증 필터
+
+springdoc:
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  enable-native-support: true
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: http://trade-server/api-docs/json
+        name: Trade
+#      - url: http://trade-server/api-docs/json #todo : service 추가 될때마다 swagger에 붙여 줘야됨.
+#        name: Trade
+#      - url: http://trade-server/api-docs/json
+#        name: Trade
+#      - url: http://trade-server/api-docs/json
+#        name: Trade
+#      - url: http://trade-server/api-docs/json
+#        name: Trade
+  cache:
+    disabled: true
 
 #eureka
 eureka:
