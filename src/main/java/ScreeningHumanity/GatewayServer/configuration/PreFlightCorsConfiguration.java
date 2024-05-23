@@ -1,5 +1,6 @@
 package ScreeningHumanity.GatewayServer.configuration;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +15,7 @@ import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
 @Configuration
+@Slf4j
 public class PreFlightCorsConfiguration {
 
     private static final String ALLOWED_HEADERS = "x-requested-with, authorization, Content-Type";
@@ -44,6 +46,7 @@ public class PreFlightCorsConfiguration {
                 headers.add("Access-Control-Allow-Credentials",ALLOWED_CREDENTIALS);
 
                 if (request.getMethod() == HttpMethod.OPTIONS) {
+                    log.info("프리플라이트 요청 접수");
                     response.setStatusCode(HttpStatus.OK);
                     return Mono.empty();
                 }
