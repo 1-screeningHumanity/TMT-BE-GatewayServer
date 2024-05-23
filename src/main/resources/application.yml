@@ -64,7 +64,7 @@ springdoc:
     operations-sorter: alpha
     config-url: /v3/api-docs/swagger-config
     urls:
-      - url: https://sdlkjflksdjf/api-docs/json
+      - url: https://sdlkfjsdlkfjl/api-docs/json
         name: Trade
 #      - url: http://trade-server/api-docs/json #todo : service 추가 될때마다 swagger에 붙여 줘야됨.
 #        name: Trade
