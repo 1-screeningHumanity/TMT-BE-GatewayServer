@@ -3,26 +3,26 @@ spring:
     name: gateway-server
   cloud:
     gateway:
-#      default-filters:
-#        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
-#      globalcors:
-#        cors-configurations:
-#          '[/**]':
-#            allowedOrigins:
-#              - 'https://localhost:3000'
-##              - '*'
-#            allow-credentials: true
-#            allowedHeaders:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - 'https://localhost:3000'
 #              - '*'
-#            allowedMethods:
-#              - PUT
-#              - GET
-#              - POST
-#              - DELETE
-#              - OPTIONS
-#            maxAge: 3600
-#            exposedHeaders:
-#              - 'Authorization'
+            allow-credentials: true
+            allowedHeaders:
+              - '*'
+            allowedMethods:
+              - PUT
+              - GET
+              - POST
+              - DELETE
+              - OPTIONS
+            maxAge: 3600
+            exposedHeaders:
+              - 'Authorization'
 
       routes:
         #매수/매도 서버 (전체 Token 인증 필요)
