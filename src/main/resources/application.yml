@@ -12,14 +12,17 @@ spring:
               - 'https://localhost:3000'
 #              - '*'
             allow-credentials: true
-            allowedHeaders: '*'
+            allowedHeaders:
+              - '*'
             allowedMethods:
               - PUT
               - GET
               - POST
               - DELETE
               - OPTIONS
-            exposedHeaders: '*' #헤더 값 접근 허용
+            maxAge: 3600
+            exposedHeaders:
+              - 'Authorization'
 
       routes:
         #매수/매도 서버 (전체 Token 인증 필요)
