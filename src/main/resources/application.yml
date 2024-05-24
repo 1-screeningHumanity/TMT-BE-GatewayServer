@@ -50,6 +50,20 @@ spring:
           filters:
             - StripPrefix=3
             - AuthorizationHeaderFilter #Token 인증 필터
+        #매수/매도 swagger
+        - id: trade-server-swagger
+          uri: lb://TRADE-SERVER
+          predicates:
+            - Path=/trade-service/api-docs/json
+          filters:
+            - StripPrefix=1
+springdoc:
+  swagger-ui:
+    urls[0]:
+      name: 매수매도 서비스
+      url: /trade-service/api-docs/json
+
+    use-root-path: true
 
 #eureka
 eureka:
