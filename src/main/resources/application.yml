@@ -69,7 +69,7 @@ springdoc:
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-    hostname: localhost
+    hostname: gateway-server
   client:
     register-with-eureka: true
     fetch-registry: true
