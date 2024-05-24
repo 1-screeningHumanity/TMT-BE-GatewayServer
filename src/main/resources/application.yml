@@ -58,6 +58,14 @@ spring:
             - Path=/trade-service/api-docs/json
           filters:
             - StripPrefix=1
+        #매수/매도 swagger
+        - id: member-server-swagger
+          uri: lb://MEMBER-SERVER
+          predicates:
+            - Path=/member-service/api-docs/json
+          filters:
+            - StripPrefix=1
+
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
   default-produces-media-type: application/json;charset=UTF-8
@@ -65,6 +73,9 @@ springdoc:
     urls[0]:
       name: 매수매도 서비스
       url: /trade-service/api-docs/json
+    urls[1]:
+      name: 회원 서비스
+      url: /member-service/api-docs/json
 
     use-root-path: true
 
