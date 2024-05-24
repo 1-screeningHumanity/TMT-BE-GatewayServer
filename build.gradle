@@ -33,10 +33,6 @@ dependencies {
 	//eureka
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
-	//swagger
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.0.4")
-
 	//test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
