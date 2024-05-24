@@ -44,13 +44,13 @@ spring:
           filters:
             - StripPrefix=3
         #유저 인증 서버 (Token 인증 필요 O path)
-        - id: member-server
-          uri: lb://MEMBER-SERVER
-          predicates:
-            - Path=/api/v1/member/**
-          filters:
-            - StripPrefix=3
-            - AuthorizationHeaderFilter #Token 인증 필터
+#        - id: member-server
+#          uri: lb://MEMBER-SERVER
+#          predicates:
+#            - Path=/api/v1/member/**
+#          filters:
+#            - StripPrefix=3
+#            - AuthorizationHeaderFilter #Token 인증 필터
         #매수/매도 swagger
         - id: trade-server-swagger
           uri: lb://TRADE-SERVER
