@@ -51,6 +51,15 @@ spring:
 #          filters:
 #            - StripPrefix=3
 #            - AuthorizationHeaderFilter #Token 인증 필터
+        #차트 서버 (전체 Token 인증 필요)
+        - id: chart-server
+          uri: lb://CHART-SERVER
+          predicates:
+            - Path=/api/v1/stockitem/**
+          filters:
+            - StripPrefix=3
+
+
         #매수/매도 swagger
         - id: trade-server-swagger
           uri: lb://TRADE-SERVER
@@ -65,6 +74,13 @@ spring:
             - Path=/member-service/api-docs/json
           filters:
             - StripPrefix=1
+        #Chart swagger
+        - id: chart-server-swagger
+          uri: lb://CHART-SERVER
+          predicates:
+            - Path=/chart-service/api-docs/json
+          filters:
+            - StripPrefix=1
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
@@ -76,6 +92,9 @@ springdoc:
     urls[1]:
       name: 회원 서비스
       url: /member-service/api-docs/json
+    urls[2]:
+      name: 차트 서비스
+      url: /chart-service/api-docs/json
 
     use-root-path: true
 
