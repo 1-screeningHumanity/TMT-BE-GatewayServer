@@ -65,6 +65,13 @@ spring:
             - Path=/api/v1/search/**
           filters:
             - StripPrefix=3
+        #결제 서버 (지갑 포함)
+        - id: payment-server
+          uri: lb://PAYMENT-SERVER
+          predicates:
+            - Path=/api/v1/payment/**
+          filters:
+            - StripPrefix=3
 
 
         #매수/매도 swagger
@@ -95,6 +102,13 @@ spring:
             - Path=/search-service/api-docs/json
           filters:
             - StripPrefix=1
+        #결제 서버 swagger
+        - id: payment-server-swagger
+          uri: lb://PAYMENT-SERVER
+          predicates:
+            - Path=/payment-service/api-docs/json
+          filters:
+            - StripPrefix=1
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
@@ -112,6 +126,9 @@ springdoc:
     urls[3]:
       name: 검색 서비스
       url: /search-service/api-docs/json
+    urls[4]:
+      name: 결제 및 지갑 서비스
+      url: /payment-service/api-docs/json
 
     use-root-path: true
 
