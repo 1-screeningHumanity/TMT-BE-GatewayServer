@@ -72,6 +72,13 @@ spring:
             - Path=/api/v1/payment/**
           filters:
             - StripPrefix=3
+        #알림 서버
+        - id: notification-server
+          uri: lb://NOTIFICATION-SERVER
+          predicates:
+            - Path=/api/v1/notification/**
+          filters:
+            - StripPrefix=3
 
 
         #매수/매도 swagger
@@ -109,6 +116,13 @@ spring:
             - Path=/payment-service/api-docs/json
           filters:
             - StripPrefix=1
+        #결제 서버 swagger
+        - id: notification-server-swagger
+          uri: lb://NOTIFICATION-SERVER
+          predicates:
+            - Path=/notification-service/api-docs/json
+          filters:
+            - StripPrefix=1
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
@@ -129,6 +143,9 @@ springdoc:
     urls[4]:
       name: 결제 및 지갑 서비스
       url: /payment-service/api-docs/json
+    urls[5]:
+      name: 알림 서비스
+      url: /notification-service/api-docs/json
 
     use-root-path: true
 
