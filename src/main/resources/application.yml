@@ -79,6 +79,7 @@ spring:
             - Path=/api/v1/notification/**
           filters:
             - StripPrefix=3
+            - AuthorizationHeaderFilter #Token 인증 필터
 
 
         #매수/매도 swagger
