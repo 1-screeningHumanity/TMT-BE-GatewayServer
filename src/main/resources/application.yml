@@ -13,6 +13,7 @@ spring:
               - 'https://localhost:3000'
               - 'http://localhost:3000'
               - 'http://10.10.10.72:3000'
+              - 'https://screeninghumanity.store/'
             #              - '*'
             allow-credentials: true
             allowedHeaders:
