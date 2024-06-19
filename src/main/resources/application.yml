@@ -90,6 +90,14 @@ spring:
           filters:
             - StripPrefix=3
             - AuthorizationHeaderFilter #Token 인증 필터
+        #Member MyPage Server (즐겨찾기, 구독)
+        - id: member-mypage-server
+          uri: lb://MEMBER-MYPAGE-SERVER
+          predicates:
+            - Path=/api/v1/member-mypage/**
+          filters:
+            - StripPrefix=3
+            - AuthorizationHeaderFilter #Token 인증 필터
 
 
         #매수/매도 swagger
@@ -141,6 +149,13 @@ spring:
             - Path=/stock-chat-service/api-docs/json
           filters:
             - StripPrefix=1
+        #Member MyPage 서버 swagger
+        - id: member-mypage-server-swagger
+          uri: lb://MEMBER-MYPAGE-SERVER
+          predicates:
+            - Path=/member-mypage-service/api-docs/json
+          filters:
+            - StripPrefix=1
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
@@ -167,6 +182,9 @@ springdoc:
     urls[6]:
       name: 종목 토론방(Chat) 서비스
       url: /stock-chat-service/api-docs/json
+    urls[7]:
+      name: Member MyPage(구독, 즐겨찾기 등) 서비스
+      url: /member-mypage-service/api-docs/json
 
     use-root-path: true
 
