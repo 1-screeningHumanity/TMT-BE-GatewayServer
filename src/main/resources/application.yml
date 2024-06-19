@@ -45,13 +45,22 @@ spring:
           filters:
             - StripPrefix=3
         #유저 인증 서버 (Token 인증 필요 O path)
-#        - id: member-server
-#          uri: lb://MEMBER-SERVER
-#          predicates:
-#            - Path=/api/v1/member/**
-#          filters:
-#            - StripPrefix=3
-#            - AuthorizationHeaderFilter #Token 인증 필터
+        #        - id: member-server
+        #          uri: lb://MEMBER-SERVER
+        #          predicates:
+        #            - Path=/api/v1/member/**
+        #          filters:
+        #            - StripPrefix=3
+        #            - AuthorizationHeaderFilter #Token 인증 필터
+        #종목 토론방(chat) 서버
+        #같은 stockitem url을 쓰는 서버가 있기 때문에, 위로 울려서 먼저 처리되도록.
+        - id: stock-chat-server
+          uri: lb://STOCK-CHAT-SERVER
+          predicates:
+            - Path=/api/v1/stockitem/chat/**
+          filters:
+            - StripPrefix=3
+            - AuthorizationHeaderFilter #Token 인증 필터
         #차트 서버
         - id: chart-server
           uri: lb://CHART-SERVER
@@ -118,11 +127,18 @@ spring:
             - Path=/payment-service/api-docs/json
           filters:
             - StripPrefix=1
-        #결제 서버 swagger
+        #알림 서버 swagger
         - id: notification-server-swagger
           uri: lb://NOTIFICATION-SERVER
           predicates:
             - Path=/notification-service/api-docs/json
+          filters:
+            - StripPrefix=1
+        #종목 토론방(chat) 서버 swagger
+        - id: stock-chat-server-swagger
+          uri: lb://STOCK-CHAT-SERVER
+          predicates:
+            - Path=/stock-chat-service/api-docs/json
           filters:
             - StripPrefix=1
 
@@ -148,6 +164,9 @@ springdoc:
     urls[5]:
       name: 알림 서비스
       url: /notification-service/api-docs/json
+    urls[6]:
+      name: 종목 토론방(Chat) 서비스
+      url: /stock-chat-service/api-docs/json
 
     use-root-path: true
 
