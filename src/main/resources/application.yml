@@ -57,10 +57,16 @@ spring:
         - id: stock-chat-server
           uri: lb://STOCK-CHAT-SERVER
           predicates:
-            - Path=/api/v1/stockitem/chat/**
+            - Path=/api/v1/stockitem/chat #채팅 글적기
           filters:
             - StripPrefix=3
             - AuthorizationHeaderFilter #Token 인증 필터
+        - id: stock-chat-server
+          uri: lb://STOCK-CHAT-SERVER
+          predicates:
+            - Path=/api/v1/stockitem/chat/** #채팅 적기
+          filters:
+            - StripPrefix=3
         #차트 서버
         - id: chart-server
           uri: lb://CHART-SERVER
