@@ -23,6 +23,7 @@ spring:
               - GET
               - POST
               - DELETE
+              - PATCH
               - OPTIONS
             maxAge: 3600
             exposedHeaders:
