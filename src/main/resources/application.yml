@@ -105,6 +105,14 @@ spring:
           filters:
             - StripPrefix=3
             - AuthorizationHeaderFilter #Token 인증 필터
+        #Ranking Server
+        - id: ranking-server
+          uri: lb://RANK-SERVER
+          predicates:
+            - Path=/api/v1/rank/**
+          filters:
+            - StripPrefix=3
+        #            - AuthorizationHeaderFilter #Token 인증 필터
 
 
         #매수/매도 swagger
@@ -163,6 +171,13 @@ spring:
             - Path=/member-mypage-service/api-docs/json
           filters:
             - StripPrefix=1
+        #Member MyPage 서버 swagger
+        - id: rank-server-swagger
+          uri: lb://RANK-SERVER
+          predicates:
+            - Path=/rank-service/api-docs/json
+          filters:
+            - StripPrefix=1
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
@@ -192,6 +207,9 @@ springdoc:
     urls[7]:
       name: Member MyPage(구독, 즐겨찾기 등) 서비스
       url: /member-mypage-service/api-docs/json
+    urls[8]:
+      name: 랭킹 서비스
+      url: /rank-service/api-docs/json
 
     use-root-path: true
 
