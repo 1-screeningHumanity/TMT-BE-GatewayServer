@@ -113,6 +113,14 @@ spring:
           filters:
             - StripPrefix=3
         #            - AuthorizationHeaderFilter #Token 인증 필터
+        #Portfolio Server
+        - id: portfolio-server
+          uri: lb://PORTFOLIO-SERVER
+          predicates:
+            - Path=/api/v1/portfolio/**
+          filters:
+            - StripPrefix=3
+        #            - AuthorizationHeaderFilter #Token 인증 필터
 
 
         #매수/매도 swagger
@@ -178,6 +186,13 @@ spring:
             - Path=/rank-service/api-docs/json
           filters:
             - StripPrefix=1
+        #Portfolio 서버 swagger
+        - id: portfolio-server-swagger
+          uri: lb://PORTFOLIO-SERVER
+          predicates:
+            - Path=/portfolio-service/api-docs/json
+          filters:
+            - StripPrefix=1
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
@@ -210,6 +225,9 @@ springdoc:
     urls[8]:
       name: 랭킹 서비스
       url: /rank-service/api-docs/json
+    urls[9]:
+      name: 포트폴리오 서비스
+      url: /portfolio-service/api-docs/json
 
     use-root-path: true
 
